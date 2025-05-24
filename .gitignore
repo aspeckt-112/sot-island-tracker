@@ -398,6 +398,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.idea/
+!.idea/codeStyles
+!.idea/runConfigurations
+!.idea/inspectionProfiles
 
 # Docker
 .env
