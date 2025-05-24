@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SotIslandTracker.Database;
@@ -11,9 +12,11 @@ using SotIslandTracker.Database;
 namespace SotIslandTracker.Migrations.Migrations
 {
     [DbContext(typeof(SotIslandTrackerDbContext))]
-    partial class SotIslandTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250524192625_AddSotIslands")]
+    partial class AddSotIslands
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

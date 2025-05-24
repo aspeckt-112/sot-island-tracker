@@ -12,6 +12,10 @@ public class SotIslandTrackerDbContext : IdentityDbContext<UserEntity, UserRoleE
     {
     }
 
+    public DbSet<RegionEntity> Regions { get; set; }
+
+    public DbSet<IslandEntity> Islands { get; set; }
+
     override protected void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 using SotIslandTracker.Database;
 using SotIslandTracker.Database.Entities;
+using SotIslandTracker.Database.Extensions;
 using SotIslandTracker.Migrations;
 
 namespace SotIslandTracker.Web.Extensions;
@@ -17,13 +18,20 @@ internal static class ServiceCollectionExtensions
                                       "Connection string 'SotIslandTrackerContext' not found.");
 
         services.AddDbContextPool<SotIslandTrackerDbContext>(options =>
-            options.UseNpgsql(connectionString,
+        {
+            options.UseNpgsql(
+                connectionString,
                 npgsqlOptions =>
                 {
                     npgsqlOptions.SetPostgresVersion(17, 5);
+
                     npgsqlOptions.MigrationsAssembly(
                         typeof(Marker).Assembly.GetName().Name);
-                }));
+                });
+
+            options.UseSeeding((context, _) => ((SotIslandTrackerDbContext)context).Seed());
+            options.UseAsyncSeeding((context, _, _) => ((SotIslandTrackerDbContext)context).SeedAsync());
+        });
 
         services.AddDatabaseDeveloperPageExceptionFilter();
 
