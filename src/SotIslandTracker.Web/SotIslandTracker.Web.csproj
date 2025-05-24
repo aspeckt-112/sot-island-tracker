@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <UserSecretsId>aspnet-SotIslandTracker.Web-08952245-bb41-4398-8b17-46b9e883a5f6</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <!-- https://github.com/dotnet/aspnetcore/issues/59291 -->
+        <CompressionEnabled>false</CompressionEnabled>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SotIslandTracker.Domain\SotIslandTracker.Domain.csproj" />
+      <ProjectReference Include="..\SotIslandTracker.Migrations\SotIslandTracker.Migrations.csproj" />
+    </ItemGroup>
+
+</Project>

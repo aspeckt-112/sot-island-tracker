@@ -1,0 +1,20 @@
+﻿services:
+  db:
+    image: 'postgres:17.5'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - 'db_data:/var/lib/postgresql/data'
+    ports:
+      - '5433:5432'  # host:container
+
+#  sot-island-tracker-web:
+#    image: sot-island-tracker.web
+#    build:
+#      context: .
+#      dockerfile: src/SotIslandTracker.Web/Dockerfile
+
+volumes:
+  db_data:
